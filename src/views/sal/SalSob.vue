@@ -112,7 +112,6 @@
 		    <el-button type="primary" @click="nextStep">{{ activeItemIndex == 10 ? '完成' : '下一步' }}</el-button>
 		  </span>
 		</el-dialog>
-
 		
 	</div>
 </template>

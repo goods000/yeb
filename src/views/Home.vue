@@ -3,16 +3,19 @@
 		<el-container>
 		  <el-header class="homeHeader">
 				<div class="title">云E办</div>
-				<el-dropdown class="userInfo" @command="commandHeader">
-					<span class="el-dropdown-link">
-					  {{ user.name }}<i><img :src="user.userFace" ></i>
-					</span>
-					<el-dropdown-menu slot="dropdown">
-					  <el-dropdown-item command="userinfo">个人中心</el-dropdown-item>
-					  <el-dropdown-item command="setting">设置</el-dropdown-item>
-					  <el-dropdown-item command="logout">注销登录</el-dropdown-item>
-					</el-dropdown-menu>
-				</el-dropdown>
+				<div>
+					<el-button icon="el-icon-bell" type="text" size="normal" style="color: black;margin-right: 8px;" @click="goChat"></el-button>
+					<el-dropdown class="userInfo" @command="commandHeader">
+						<span class="el-dropdown-link"  style="display: flex;align-items: center;">
+						  {{ user.name }}<i><img :src="user.userFace" ></i>
+						</span>
+						<el-dropdown-menu slot="dropdown">
+						  <el-dropdown-item command="userinfo">个人中心</el-dropdown-item>
+						  <el-dropdown-item command="setting">设置</el-dropdown-item>
+						  <el-dropdown-item command="logout">注销登录</el-dropdown-item>
+						</el-dropdown-menu>
+					</el-dropdown>
+				</div>
 		  </el-header>
 		  <el-container>
 		    <el-aside width="200px">
@@ -58,6 +61,10 @@
 			}
 		},
 		methods:{
+			// 在线聊天
+			goChat(){
+				this.$router.push('/chat');
+			},
 			// menuClike(index){
 			// 	this.$router.push(index);
 			// }
