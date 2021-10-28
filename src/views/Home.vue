@@ -51,13 +51,16 @@
 		name: 'Home',
 		data() {
 			return{
-				user: JSON.parse(window.sessionStorage.getItem('user')),
+				// user: JSON.parse(window.sessionStorage.getItem('user')),
 			}
 		},
 		computed:{
 			routes(){
 				// return this.$router.options.routes;
 				return this.$store.state.routes;
+			},
+			user(){
+				return this.$store.state.currentAdmin;
 			}
 		},
 		methods:{
@@ -89,6 +92,9 @@
 							message: '已取消操作'
 						});
 					});
+				}
+				if(command == "userinfo"){
+					this.$router.push('/userinfo');
 				}
 			}
 		},

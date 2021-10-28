@@ -11,7 +11,10 @@ export const initMenu = (router,store) => {
 			let fmtRoutes = formatRoutes(data);
 			// 添加到router
 			router.addRoutes(fmtRoutes);
+			// 将数据存入vuex
 			store.commit('initRoutes',fmtRoutes);
+			// 链接websocket
+			store.dispatch('connect');
 		}
 	})
 }

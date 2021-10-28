@@ -33,6 +33,9 @@ router.beforeEach((to, from, next) => {
 				if(resp){
 					// 存入用户信息
 					window.sessionStorage.setItem('user',JSON.stringify(resp));
+					// 存入用户信息
+					// store.commit('INIT_CURRENTADMIN',resp);
+					store.commit('INIT_ADMIN',resp);
 					next();
 				}
 			})

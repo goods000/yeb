@@ -11,8 +11,13 @@ proxyObj['/'] = {
 	pathReWrite:{
 		'^/':'/'
 	}
-}
+};
 
+// WebSocket代理 (需要下载两个js ---  npm install sockjs-client / npm install stompjs  ---)
+proxyObj['/wx'] = {
+	ws:true,
+	target:'ws://localhost:8081'
+};
 
 module.exports = {
 	devServer: {

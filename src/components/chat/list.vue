@@ -1,9 +1,9 @@
 <template>
   <div id="list">
   	<ul>
-  		<li v-for="item in admins" :class="{ active: item.id === currentSessionId }" v-on:click="changeCurrentSessionId(item.id)"><!--   :class="[item.id === currentSessionId ? 'active':'']" -->
-  			<img class="avatar" :src="item.userFace" :alt="item.name">
-  			<p class="name">{{item.name}}</p>
+  		<li v-for="item in admins" :class="{ active: currentSession ? item.username === currentSession.username : false }" v-on:click="changeCurrentSession(item)"><!--   :class="[item.id === currentSession ? 'active':'']" -->
+  			<img class="avatar" :src="item.userFace" :alt="item.username">
+  			<el-badge :is-dot="idDot[user.username+'#'+item.username]" class="item"><p class="name">{{item.name}}</p></el-badge>
   		</li>
   	</ul>
   </div>
@@ -16,17 +16,18 @@ export default {
   name: 'list',
   data () {
     return {
-      
+      user: JSON.parse(window.sessionStorage.getItem('user')),
     }
   },
   computed: mapState([
   // 'sessions',
+  'idDot',
   'admins',
-  'currentSessionId'
+  'currentSession'
 	]),
   methods:{
-  	changeCurrentSessionId:function (id) {
-  		this.$store.commit('changeCurrentSessionId',id)
+  	changeCurrentSession:function (currentSession) {
+  		this.$store.commit('changeCurrentSession',currentSession)
   	}
   }
 }
@@ -38,7 +39,7 @@ export default {
 		padding-left: 0px;
 	}
 	li {
-		padding: 0px 15px;
+		padding: 15px 15px;
 		border-bottom: 1px solid #292C33;
 		cursor: pointer;
 		&:hover {
@@ -57,6 +58,8 @@ export default {
 	.name {
 		display: inline-block;
 		margin-left: 15px;
+		margin-top: 0px;
+		margin-bottom: 0px;
 	}
 }
 </style>
