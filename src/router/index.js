@@ -15,7 +15,7 @@ const routes = [
 	hidden: true,
   },
   {
-    path: '/homw',
+    path: '/home',
     name: 'Home',
     component: Home,
   	children:[
